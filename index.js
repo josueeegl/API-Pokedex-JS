@@ -1,4 +1,5 @@
 const express = require('express');
+var body_parser = require('body-parser');
 const path = require('path');
 var info_pokemon = require('./JS/getPokemonInformations.js');
 var evolucion = require('./JS/getPokemonEvolutions.js');
@@ -12,8 +13,10 @@ app.get('/', (req, res) => {
   res.sendFile(path_inicial)
 })
 
-//se usa en vez de body-parse
-app.use(express.json());
+//ponemos body parser para acceder a los datos enviados desde el formulario
+app.use(body_parser.urlencoded({
+  extended: true
+}));
 
 
 
