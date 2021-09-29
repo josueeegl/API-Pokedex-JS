@@ -24,7 +24,6 @@ exports.tipos = function () {
     })
     return result;
 }
-
 exports.buscarxtipos = function (tipo) {
     let data_tipos = db_pokedex.filter((item, index) => {
         for (let i = 0; i < item.types.length; i++) {
@@ -32,6 +31,15 @@ exports.buscarxtipos = function (tipo) {
             return tipo === item.types[i];
 
         }
+
+    })
+    return data_tipos;
+}
+
+exports.buscar_base = function (min, max) {
+    let data_tipos = db_pokedex.filter((item, index) => {
+
+        return parseInt(item.base_experience, 10) >= min && parseInt(item.base_experience, 10) <= max;
 
     })
     return data_tipos;
