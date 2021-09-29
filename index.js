@@ -1,32 +1,20 @@
 const express = require('express');
 var body_parser = require('body-parser');
 const path = require('path');
-var info_pokemon = require('./public/JS/getPokemonInformations.js');
-var evolucion = require('./public/JS/getPokemonEvolutions.js');
 
 const app = express();
 
-//Aqui llamaremos al html
+//configuraciones
 let path_inicial = path.join(__dirname, '/public');
-app.use(express.static(path_inicial));
-app.get('/', (req, res) => {
-  res.sendFile(path.join(path_inicial, '/HTML/index.html'))
-})
-
-//ponemos body parser para acceder a los datos enviados desde el formulario
+app.set('views', path.join(path_inicial, 'HTML'));
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'ejs');
 app.use(body_parser.urlencoded({
   extended: true
 }));
 
-
-
-//construye las rutas de servicio
-app.post('/pokemon-informations', info_pokemon.Informacion_pokemon);
-app.post('/pokemon-evolutions', evolucion.Evolucion_pokemon);
-app.post('/errors', function (requ, res) {
-  console.error(requ.body, res);
-  res.sendStatus(200);
-});
+//rutas
+app.use(require('./public/routes/routes'));
 
 //iniciar el server est
 const PORT = process.env.PORT || 5000;
