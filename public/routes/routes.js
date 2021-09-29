@@ -8,6 +8,7 @@ var tipos = require('../JS/tipos_pokemon');
 router.get('/', tipos.cargar_tipos);
 
 router.post('/pokemon-informations', info_pokemon.Informacion_pokemon);
+router.post('/tipos_pokemon', tipos.Buscar_tipo);
 router.post('/pokemon-evolutions', evolucion.Evolucion_pokemon);
 router.post('/errors', function (requ, res) {
     console.error(requ.body, res);

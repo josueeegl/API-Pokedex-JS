@@ -4,12 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title%></title>
-    <link
-      rel="stylesheet"
-      href="../CSS/container.css"
-      type="text/css"
-    />
+    <title>Pokedex</title>
+    <link rel="stylesheet" href="../CSS/container.css" type="text/css" />
   </head>
   <body>
     <form action="pokemon-informations" method="post">
@@ -17,6 +13,20 @@
       <input type="text" id="nombre" name="nombre" />
       <input type="submit" />
     </form>
-    <div id="lista"></div>
+    <form action="tipos_pokemon" method="post"> 
+      <div id="lista">
+        <label
+          >Tipos de pokemon:
+          <select name="t_pokemon" id="t_pokemon">
+            <option value="">Selecciona</option>
+            <% for(let i=0; i<lista.length; i++) {%>
+            <option value=<%= lista[i] %>> <%= lista[i] %></option>
+            <% }; %>
+          </select>
+        </label>
+        <input type="submit" />
+      </div>
+    </form>
+    
   </body>
 </html>
