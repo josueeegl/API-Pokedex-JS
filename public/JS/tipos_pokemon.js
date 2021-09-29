@@ -9,8 +9,10 @@ exports.cargar_tipos = function (req, res) {
 
 exports.Buscar_tipo = function (req, res) {
     const tipo_pokemon = req.body.t_pokemon;
-    const pokemonInfos = buscar.tipos();
+    const pokemonInfos = buscar.buscarxtipos(tipo_pokemon);
+    console.log(pokemonInfos);
     res.render('Pokemonbytype.html', {
-        tipo: tipo_pokemon
+        tipo: tipo_pokemon,
+        arreglo: pokemonInfos
     });
 }

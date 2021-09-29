@@ -24,3 +24,15 @@ exports.tipos = function () {
     })
     return result;
 }
+
+exports.buscarxtipos = function (tipo) {
+    let data_tipos = db_pokedex.filter((item, index) => {
+        for (let i = 0; i < item.types.length; i++) {
+
+            return tipo === item.types[i];
+
+        }
+
+    })
+    return data_tipos;
+}
