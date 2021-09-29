@@ -1,16 +1,16 @@
 const express = require('express');
 var body_parser = require('body-parser');
 const path = require('path');
-var info_pokemon = require('./JS/getPokemonInformations.js');
-var evolucion = require('./JS/getPokemonEvolutions.js');
+var info_pokemon = require('./public/JS/getPokemonInformations.js');
+var evolucion = require('./public/JS/getPokemonEvolutions.js');
 
 const app = express();
 
 //Aqui llamaremos al html
-let path_inicial = path.join(__dirname, 'index.html');
+let path_inicial = path.join(__dirname, '/public');
 app.use(express.static(path_inicial));
 app.get('/', (req, res) => {
-  res.sendFile(path_inicial)
+  res.sendFile(path.join(path_inicial, '/HTML/index.html'))
 })
 
 //ponemos body parser para acceder a los datos enviados desde el formulario
