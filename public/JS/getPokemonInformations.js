@@ -7,7 +7,10 @@ exports.Informacion_pokemon = function (req, res) {
 
         res.send(`el pokemon ${pokemon} no fue encontrado`);
     } else {
-        res.send(`<h1>${pokemonInfos.name}</h1> `);
+        res.render('Pokemons.html', {
+            Nombre: pokemonInfos.name,
+            image: pokemonInfos.image
+        });
 
     }
 }

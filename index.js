@@ -16,6 +16,10 @@ app.use(body_parser.urlencoded({
 //rutas
 app.use(require('./public/routes/routes'));
 
+
+//estatico
+app.use(express.static(path.join(__dirname, 'public')))
+
 //iniciar el server est
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`App iniciado en ${PORT}`));
