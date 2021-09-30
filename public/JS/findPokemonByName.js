@@ -44,3 +44,10 @@ exports.buscar_base = function (min, max) {
     })
     return data_tipos;
 }
+exports.MaxMin = function () {
+    let data_tipos = db_pokedex.sort(((a, b) => {
+        return b.height - a.height && b.weight - a.weight
+    }))
+    console.log(data_tipos.length);
+    return data_tipos;
+}
